@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E8590C">
+<title>AI Quảng Cáo Việt</title>
+<meta name="description" content="Viết bài quảng cáo tiếng Việt nhanh cho cửa hàng nhỏ.">
+<style>
+  :root{
+    --cam:#E8590C; --cam-dam:#C2410C; --cam-nhat:#FFF1E6;
+    --chu:#1F2937; --chu-phu:#6B7280; --nen:#FAF7F2; --the:#fff; --vien:#E5E7EB;
+    --xanh:#15803D; --do:#B91C1C; --bong:0 2px 10px rgba(0,0,0,.07);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{font-size:18px}
+  body{margin:0;background:var(--nen);color:var(--chu);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  header{background:linear-gradient(135deg,var(--cam),#F59F00);color:#fff;padding:18px 16px 20px}
+  header h1{margin:0;font-size:1.35rem;letter-spacing:.2px}
+  header p{margin:4px 0 0;font-size:.9rem;opacity:.95}
+  main{max-width:640px;margin:0 auto;padding:14px}
+  .tab{display:none} .tab.active{display:block}
+  .card{background:var(--the);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:var(--bong)}
+  .card h2{margin:0 0 10px;font-size:1.15rem}
+  label{display:block;font-weight:600;margin:14px 0 6px;font-size:.95rem}
+  .goi-y{font-weight:400;color:var(--chu-phu);font-size:.8rem}
+  input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:13px 12px;border:1.5px solid var(--vien);
+    border-radius:12px;background:#fff;color:var(--chu);min-height:50px}
+  textarea{min-height:76px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:3px solid #FFD8BF;border-color:var(--cam)}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:14px;
+    font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer;text-decoration:none;padding:12px 16px}
+  .btn:active{transform:scale(.98)}
+  .btn-chinh{background:var(--cam);color:#fff}
+  .btn-chinh:disabled{opacity:.6}
+  .btn-phu{background:var(--cam-nhat);color:var(--cam-dam)}
+  .btn-zalo{background:#0068FF;color:#fff}
+  .btn-vien{background:#fff;color:var(--chu);border:1.5px solid var(--vien)}
+  .hang{display:flex;gap:10px;margin-top:10px} .hang .btn{flex:1}
+  .chip-hang{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{padding:10px 14px;border-radius:999px;border:1.5px solid var(--vien);background:#fff;font:inherit;font-size:.92rem;cursor:pointer;min-height:44px}
+  .chip.on{background:var(--cam);border-color:var(--cam);color:#fff;font-weight:700}
+  .huy-hieu{display:inline-block;font-size:.78rem;padding:4px 10px;border-radius:999px;font-weight:700}
+  .hh-demo{background:#FEF3C7;color:#92400E} .hh-ai{background:#DCFCE7;color:var(--xanh)}
+  .ket-qua{display:none} .ket-qua.hien{display:block}
+  .muc{margin:12px 0;padding:12px;background:var(--nen);border-radius:12px;white-space:pre-wrap;word-break:break-word}
+  .muc small{display:block;color:var(--chu-phu);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .muc.tieu-de{font-weight:800;font-size:1.1rem}
+  .canh-bao{background:#FFFBEB;border:1px solid #FCD34D;color:#78350F;border-radius:12px;padding:10px 12px;font-size:.85rem;margin-top:10px}
+  .loi{background:#FEF2F2;border:1px solid #FCA5A5;color:var(--do);border-radius:12px;padding:10px 12px;font-size:.9rem;margin-top:10px;display:none}
+  .bang-mau{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .mau{flex:1 1 70px;min-height:64px;border-radius:12px;border:1px solid rgba(0,0,0,.12);display:flex;align-items:flex-end;justify-content:center;
+    font-size:.72rem;font-weight:700;padding:4px;cursor:pointer}
+  .poster{border-radius:14px;padding:22px 16px;text-align:center;margin:10px 0}
+  .poster b{display:block;font-size:1.45rem;line-height:1.25;margin-bottom:8px}
+  .poster span{display:block;font-size:.95rem;margin:2px 0}
+  .poster em{display:inline-block;margin-top:12px;padding:8px 16px;border-radius:999px;font-style:normal;font-weight:800}
+  ul.dep{padding-left:20px;margin:6px 0} ul.dep li{margin:4px 0}
+  .dv h3{margin:0 0 4px;font-size:1.05rem} .dv p{margin:0;color:var(--chu-phu);font-size:.93rem}
+  .dv .bieu-tuong{font-size:1.8rem}
+  nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--vien);display:flex;
+    padding-bottom:env(safe-area-inset-bottom);z-index:10}
+  nav button{flex:1;background:none;border:0;font:inherit;font-size:.78rem;padding:9px 4px;min-height:64px;color:var(--chu-phu);cursor:pointer}
+  nav button .bt{display:block;font-size:1.4rem;line-height:1.2}
+  nav button.on{color:var(--cam);font-weight:800}
+  .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);
+    background:#111827;color:#fff;padding:12px 18px;border-radius:999px;font-size:.92rem;opacity:0;pointer-events:none;
+    transition:.25s;z-index:20;max-width:90vw;text-align:center}
+  .toast.hien{opacity:1;transform:translateX(-50%) translateY(0)}
+  .chan{color:var(--chu-phu);font-size:.8rem;text-align:center;padding:6px 16px 0}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📣 AI Quảng Cáo Việt</h1>
+  <p>Viết bài quảng cáo tiếng Việt trong vài giây</p>
+</header>
+
+<main>
+
+<!-- TAB 1: TẠO QUẢNG CÁO -->
+<section id="tab-tao" class="tab active">
+  <div class="card">
+    <h2>Thông tin cửa hàng</h2>
+    <div id="trang-thai"></div>
+    <form id="form" autocomplete="off" novalidate>
+      <label for="ten">Tên cửa hàng</label>
+      <input id="ten" maxlength="80" placeholder="Ví dụ: Tiệm bánh Mẹ Lan">
+
+      <label for="sp">Sản phẩm / dịch vụ <span class="goi-y">(bắt buộc)</span></label>
+      <textarea id="sp" maxlength="300" placeholder="Ví dụ: Bánh bông lan trứng muối, đặt theo ngày"></textarea>
+
+      <label for="gia">Giá</label>
+      <input id="gia" maxlength="60" placeholder="Ví dụ: 85.000đ/hộp">
+
+      <label for="uudai">Ưu đãi <span class="goi-y">(nếu có)</span></label>
+      <input id="uudai" maxlength="120" placeholder="Ví dụ: Giảm 10% cho khách mới, freeship nội thành">
+
+      <label for="kh">Khách hàng mục tiêu</label>
+      <input id="kh" maxlength="120" placeholder="Ví dụ: Mẹ bỉm sữa, dân văn phòng">
+
+      <label for="nentang">Đăng ở đâu?</label>
+      <select id="nentang">
+        <option value="facebook">Facebook</option>
+        <option value="zalo">Zalo</option>
+        <option value="tiktok">TikTok (ngắn)</option>
+        <option value="instagram">Instagram</option>
+        <option value="cho">Chợ online (Shopee, Chợ Tốt...)</option>
+      </select>
+
+      <label>Phong cách viết</label>
+      <div class="chip-hang" id="phongcach" role="radiogroup" aria-label="Phong cách viết">
+        <button type="button" class="chip on" data-v="thanthien">😊 Thân thiện</button>
+        <button type="button" class="chip" data-v="chuyennghiep">💼 Chuyên nghiệp</button>
+        <button type="button" class="chip" data-v="haihuoc">😄 Hài hước</button>
+        <button type="button" class="chip" data-v="sangtrong">✨ Sang trọng</button>
+        <button type="button" class="chip" data-v="khuyenmai">🔥 Khuyến mãi gấp</button>
+      </div>
+
+      <div class="loi" id="loi" role="alert"></div>
+      <div style="height:16px"></div>
+      <button type="submit" class="btn btn-chinh" id="nut-tao">✍️ Tạo quảng cáo</button>
+      <div class="hang">
+        <button type="button" class="btn btn-phu" id="nut-demo">🧪 Điền mẫu demo</button>
+        <button type="button" class="btn btn-vien" id="nut-xoa">🗑️ Xóa form</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card ket-qua" id="ket-qua" aria-live="polite">
+    <h2>Bài quảng cáo của bạn <span id="hh-che-do" class="huy-hieu"></span></h2>
+    <div class="muc tieu-de"><small>Tiêu đề</small><span id="r-tieude"></span></div>
+    <div class="muc"><small>Nội dung</small><span id="r-noidung"></span></div>
+    <div class="muc"><small>Lời kêu gọi hành động</small><span id="r-cta"></span></div>
+    <div class="muc"><small>Hashtag</small><span id="r-hashtag"></span></div>
+    <button class="btn btn-chinh" id="nut-chep">📋 Sao chép bài viết</button>
+    <div class="hang">
+      <button class="btn btn-phu" id="nut-lai">🔄 Tạo lại</button>
+      <button class="btn btn-phu" id="nut-sangthietke">🎨 Ý tưởng poster</button>
+    </div>
+    <div class="canh-bao">⚠️ Hãy đọc lại và sửa cho đúng thực tế trước khi đăng. Tránh cam kết không có căn cứ (như "số 1", "tốt nhất", "cam kết 100%") vì có thể vi phạm quy định về quảng cáo.</div>
+  </div>
+</section>
+
+<!-- TAB 2: Ý TƯỞNG THIẾT KẾ -->
+<section id="tab-thietke" class="tab">
+  <div class="card">
+    <h2>🎨 Ý tưởng thiết kế poster</h2>
+    <p style="margin-top:0;color:var(--chu-phu);font-size:.92rem">Dựa trên thông tin và phong cách bạn đã chọn ở tab "Tạo bài". Gợi ý này dùng để đưa cho người thiết kế hoặc tự làm trên Canva, Zalo, điện thoại.</p>
+    <button class="btn btn-chinh" id="nut-tk">💡 Gợi ý thiết kế</button>
+  </div>
+  <div id="tk-ketqua" style="display:none">
+    <div class="card">
+      <h2>Mẫu bố cục</h2>
+      <div class="poster" id="tk-poster"></div>
+      <small id="tk-kichthuoc" style="color:var(--chu-phu)"></small>
+    </div>
+    <div class="card">
+      <h2>Bảng màu <span class="goi-y">(chạm để chép mã màu)</span></h2>
+      <div class="bang-mau" id="tk-mau"></div>
+    </div>
+    <div class="card">
+      <h2>Bố cục gợi ý</h2>
+      <ul class="dep" id="tk-bocuc"></ul>
+      <h2 style="margin-top:14px">Chữ & hình ảnh</h2>
+      <ul class="dep" id="tk-chu"></ul>
+    </div>
+    <div class="card">
+      <h2>Nội dung chữ trên poster</h2>
+      <div class="muc tieu-de"><small>Tiêu đề lớn</small><span id="tk-tieude"></span></div>
+      <div class="muc"><small>Dòng phụ</small><span id="tk-phu"></span></div>
+      <button class="btn btn-chinh" id="nut-chep-tk">📋 Sao chép nội dung poster</button>
+      <div class="hang"><button class="btn btn-phu" id="nut-tk-lai">🔄 Gợi ý khác</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 3: DỊCH VỤ -->
+<section id="tab-dichvu" class="tab">
+  <div class="card">
+    <h2>Dịch vụ của chúng tôi</h2>
+    <p style="margin-top:0;color:var(--chu-phu);font-size:.92rem">Bạn bận bán hàng? Hãy để chúng tôi lo bài viết và hình ảnh quảng cáo.</p>
+  </div>
+  <div class="card dv"><div class="bieu-tuong">✍️</div><h3>Viết bài quảng cáo</h3>
+    <p>Bài đăng Facebook, Zalo, TikTok, Shopee viết riêng cho cửa hàng của bạn, có chỉnh sửa theo ý bạn.</p></div>
+  <div class="card dv"><div class="bieu-tuong">🖼️</div><h3>Thiết kế poster & banner</h3>
+    <p>Poster khuyến mãi, ảnh bìa fanpage, banner đúng kích thước từng nền tảng.</p></div>
+  <div class="card dv"><div class="bieu-tuong">📅</div><h3>Lịch đăng bài hằng tháng</h3>
+    <p>Kế hoạch nội dung theo tuần để cửa hàng luôn có bài mới mà không phải nghĩ mỗi ngày.</p></div>
+  <div class="card dv"><div class="bieu-tuong">🤝</div><h3>Tư vấn miễn phí ban đầu</h3>
+    <p>Nhắn Zalo để được hỏi nhanh về nhu cầu và báo giá phù hợp. Giá tùy theo công việc cụ thể.</p></div>
+  <div class="card">
+    <a class="btn btn-zalo" id="nut-zalo" href="#" role="button">💬 Liên hệ qua Zalo</a>
+  </div>
+</section>
+
+<p class="chan">AI Quảng Cáo Việt · bản thử nghiệm</p>
+</main>
+
+<nav aria-label="Điều hướng chính">
+  <button class="on" data-tab="tao"><span class="bt">✍️</span>Tạo bài</button>
+  <button data-tab="thietke"><span class="bt">🎨</span>Ý tưởng thiết kế</button>
+  <button data-tab="dichvu"><span class="bt">🛎️</span>Dịch vụ</button>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ CẤU HÌNH — CHỈ SỬA PHẦN NÀY ============ */
+// Điền số Zalo của bạn giữa hai dấu nháy, ví dụ: "0901234567". Để trống thì nút sẽ báo "chưa cấu hình".
+var SO_ZALO = "";
+/* ======================================================= */
+
+(function(){
+"use strict";
+
+var $ = function(id){return document.getElementById(id)};
+var phongCach = "thanthien";
+var cheDoAI = false;          // true khi máy chủ đã cấu hình AI thật
+var lanTao = 0;               // đổi mỗi lần bấm "Tạo lại" để nội dung khác đi
+var ketQuaHienTai = null;
+var thietKeHienTai = null;
+var thietKeLan = 0;
+
+/* ---------- Tiện ích ---------- */
+function toast(msg){
+  var t = $("toast"); t.textContent = msg; t.classList.add("hien");
+  clearTimeout(toast._t); toast._t = setTimeout(function(){t.classList.remove("hien")}, 2200);
+}
+function chon(arr, n){ return arr[((n % arr.length) + arr.length) % arr.length]; }
+function lamSach(s){ return (s||"").replace(/[<>]/g,"").replace(/\s+/g," ").trim(); }
+function boDau(s){
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D");
+}
+function taoHashtag(s){
+  var w = boDau(s).replace(/[^A-Za-z0-9 ]/g," ").split(" ").filter(Boolean).slice(0,4);
+  if(!w.length) return "";
+  return "#" + w.map(function(x){return x.charAt(0).toUpperCase()+x.slice(1).toLowerCase()}).join("");
+}
+function sao(text){
+  if(navigator.clipboard && window.isSecureContext){
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise(function(ok, loi){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand("copy") ? ok() : loi(); }catch(e){ loi(e); }
+    document.body.removeChild(ta);
+  });
+}
+function chepVaBao(text){
+  sao(text).then(function(){toast("Đã sao chép ✅")}, function(){toast("Không sao chép được. Hãy nhấn giữ chữ để chép tay.")});
+}
+
+/* ---------- Điều hướng ---------- */
+function mo(tab){
+  document.querySelectorAll(".tab").forEach(function(e){e.classList.remove("active")});
+  $("tab-"+tab).classList.add("active");
+  document.querySelectorAll("nav button").forEach(function(b){b.classList.toggle("on", b.dataset.tab===tab)});
+  window.scrollTo({top:0});
+}
+document.querySelectorAll("nav button").forEach(function(b){
+  b.addEventListener("click", function(){mo(b.dataset.tab)});
+});
+
+/* ---------- Phong cách ---------- */
+$("phongcach").addEventListener("click", function(e){
+  var b = e.target.closest(".chip"); if(!b) return;
+  document.querySelectorAll("#phongcach .chip").forEach(function(c){c.classList.remove("on")});
+  b.classList.add("on"); phongCach = b.dataset.v;
+});
+function datPhongCach(v){
+  phongCach = v;
+  document.querySelectorAll("#phongcach .chip").forEach(function(c){c.classList.toggle("on", c.dataset.v===v)});
+}
+
+/* ---------- Đọc form ---------- */
+function docForm(){
+  return {
+    ten: lamSach($("ten").value),
+    sp: lamSach($("sp").value),
+    gia: lamSach($("gia").value),
+    uudai: lamSach($("uudai").value),
+    kh: lamSach($("kh").value),
+    nentang: $("nentang").value,
+    phongcach: phongCach
+  };
+}
+function baoLoi(msg){
+  var e = $("loi"); e.textContent = msg; e.style.display = msg ? "block" : "none";
+}
+
+/* ============ BỘ TẠO NỘI DUNG DEMO (chạy ngay trên trình duyệt, không cần mạng) ============ */
+var MAU = {
+  thanthien:{
+    tieude:["{sp} – {ten} gửi bạn nè! 😊","Bạn đã thử {sp} chưa?","{ten} có {sp} đây, ghé xem nhé!","Hôm nay ăn gì, mua gì? Ghé {ten} nha!"],
+    mo:["Chào cả nhà! 👋 {ten} xin giới thiệu {sp}.","Cả nhà ơi, {ten} có món mới muốn khoe với mọi người nè!","Xin chào, {ten} đây ạ! Hôm nay mình giới thiệu {sp}."],
+    dong:["Mình làm bằng cả tấm lòng, mong được phục vụ cả nhà ❤️","{ten} luôn cố gắng phục vụ thật tận tình ạ 🌷"],
+    cta:["Nhắn tin {ten} ngay để được tư vấn nhé!","Bấm nhắn tin hoặc gọi, mình trả lời liền ạ! 💬"]
+  },
+  chuyennghiep:{
+    tieude:["{ten} – {sp}","Giải pháp {sp} từ {ten}","{ten} cung cấp {sp}","Giới thiệu {sp}"],
+    mo:["{ten} trân trọng giới thiệu {sp}.","{ten} hiện cung cấp {sp} với quy trình rõ ràng, minh bạch.","Thông tin về {sp} tại {ten}:"],
+    dong:["Chúng tôi sẵn sàng tư vấn chi tiết theo nhu cầu của quý khách.","Thông tin chi tiết xin liên hệ trực tiếp để được hỗ trợ."],
+    cta:["Liên hệ {ten} để được tư vấn và báo giá.","Đặt lịch tư vấn ngay hôm nay."]
+  },
+  haihuoc:{
+    tieude:["Ví tiền khóc, nhưng {sp} thì cười! 😆","{sp} đây rồi, hết cớ để lười! 🤭","Đừng để {sp} chờ bạn lâu, nó buồn đó!","Alo alo, {ten} đang gọi bạn!"],
+    mo:["Này bạn ơi, nghe nói bạn đang tìm {sp}? 👀 {ten} có đây!","Bí mật nhỏ: {sp} của {ten} đang chờ bạn rước về! 🤫","Cảnh báo: đọc bài này có thể dẫn đến việc muốn mua {sp} ngay! 😂"],
+    dong:["Mua rồi không hối hận, chỉ hối hận vì không mua sớm hơn! 😜","Hỏi thử chơi cũng được, {ten} không cắn đâu! 🐶"],
+    cta:["Nhắn {ten} liền tay kẻo lỡ nha! 🏃","Inbox đi bạn ơi, đừng ngại! 💬"]
+  },
+  sangtrong:{
+    tieude:["{sp} – Tinh tế từng chi tiết","{ten} · {sp}","Trải nghiệm {sp} đẳng cấp","Phong cách riêng cùng {ten}"],
+    mo:["{ten} kính giới thiệu {sp}, dành cho những ai đề cao sự tinh tế.","Mỗi chi tiết của {sp} đều được chăm chút cẩn thận.","Một lựa chọn thanh lịch từ {ten}."],
+    dong:["Dịch vụ được cá nhân hóa theo mong muốn của từng quý khách.","Sự hài lòng của quý khách là ưu tiên của chúng tôi."],
+    cta:["Kính mời quý khách liên hệ {ten} để được phục vụ.","Đặt lịch riêng cùng {ten}."]
+  },
+  khuyenmai:{
+    tieude:["🔥 SĂN DEAL {sp} – SỐ LƯỢNG CÓ HẠN! 🔥","⚡ {ten} KHUYẾN MÃI {sp} ⚡","🎉 ƯU ĐÃI ĐANG CHẠY – ĐỪNG BỎ LỠ! 🎉","⏰ CHỈ HÔM NAY: {sp}"],
+    mo:["📢 {ten} đang có chương trình cho {sp}!","🔔 Tin vui! {sp} tại {ten} đang có ưu đãi, xem ngay!","💥 Cơ hội hiếm: {sp} cùng ưu đãi từ {ten}!"],
+    dong:["Số lượng có hạn, ai nhắn trước được trước! ⏳","Chương trình có thể kết thúc sớm, nhanh tay nhé! 🏃‍♀️"],
+    cta:["👉 NHẮN TIN NGAY để giữ ưu đãi!","👉 Gọi hoặc inbox liền tay, đừng để mai!"]
+  }
+};
+var CTA_NEN = {
+  facebook:"Bình luận hoặc inbox fanpage để được tư vấn.",
+  zalo:"Nhắn Zalo cho mình để được tư vấn nhanh.",
+  tiktok:"Nhấn theo dõi và nhắn tin để biết thêm.",
+  instagram:"Nhắn tin (DM) để đặt hàng.",
+  cho:"Nhấn chat với người bán để được hỗ trợ."
+};
+var HASHTAG_NEN = {
+  facebook:["#QuangCao","#MuaSamOnline"], zalo:["#ZaloShop","#MuaSamOnline"],
+  tiktok:["#fyp","#TikTokShop"], instagram:["#Instagram","#Shop"], cho:["#ChoOnline","#MuaBanOnline"]
+};
+
+function dien(s, d){
+  var r = s.replace(/\{ten\}/g, d.ten || "cửa hàng chúng tôi").replace(/\{sp\}/g, d.sp);
+  // Viết hoa chữ đầu câu khi tên cửa hàng để trống
+  return r.replace(/(^|[.!?]\s+|\p{Extended_Pictographic}\s+)cửa hàng chúng tôi/gu, "$1Cửa hàng chúng tôi");
+}
+
+function taoDemo(d, lan){
+  var m = MAU[d.phongcach] || MAU.thanthien;
+  var ngan = d.nentang === "tiktok";
+  var dongGia = [];
+  if(d.gia)   dongGia.push("💰 Giá: " + d.gia);
+  if(d.uudai) dongGia.push("🎁 Ưu đãi: " + d.uudai);
+  if(d.kh)    dongGia.push("👥 Phù hợp với: " + d.kh);
+
+  var tieuDe = dien(chon(m.tieude, lan), d);
+  var phan = [dien(chon(m.mo, lan), d)];
+  if(dongGia.length) phan.push(dongGia.join("\n"));
+  if(!ngan) phan.push(dien(chon(m.dong, lan + 1), d));
+  var noiDung = phan.join("\n\n");
+
+  var cta = dien(chon(m.cta, lan), d) + " " + CTA_NEN[d.nentang];
+  var ht = [];
+  var h1 = taoHashtag(d.ten), h2 = taoHashtag(d.sp.split(/[,.;]/)[0]);
+  if(h1) ht.push(h1);
+  if(h2 && ht.indexOf(h2)<0) ht.push(h2);
+  HASHTAG_NEN[d.nentang].forEach(function(x){ht.push(x)});
+  ht.push("#KhuyenMai");
+  if(ngan) ht = ht.slice(0,5);
+  return {tieude:tieuDe, noidung:noiDung, cta:cta, hashtag:ht.join(" ")};
+}
+
+/* ============ GỌI AI THẬT (qua máy chủ, nếu đã cấu hình) ============ */
+function goiAI(d, lan){
+  var ctl = new AbortController();
+  var t = setTimeout(function(){ctl.abort()}, 25000);
+  return fetch("/api/generate", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({data:d, variant:lan}), signal: ctl.signal
+  }).then(function(r){
+    clearTimeout(t);
+    if(!r.ok) throw new Error("http "+r.status);
+    return r.json();
+  }).then(function(j){
+    if(!j || !j.ok || !j.result) throw new Error("khong-co-ket-qua");
+    var x = j.result;
+    return {tieude:String(x.tieude||""), noidung:String(x.noidung||""), cta:String(x.cta||""), hashtag:String(x.hashtag||"")};
+  });
+}
+
+/* ---------- Hiển thị kết quả ---------- */
+function hienKetQua(r, laAI){
+  ketQuaHienTai = r;
+  $("r-tieude").textContent = r.tieude;
+  $("r-noidung").textContent = r.noidung;
+  $("r-cta").textContent = r.cta;
+  $("r-hashtag").textContent = r.hashtag;
+  var hh = $("hh-che-do");
+  hh.textContent = laAI ? "AI" : "Mẫu demo";
+  hh.className = "huy-hieu " + (laAI ? "hh-ai" : "hh-demo");
+  var kq = $("ket-qua"); kq.classList.add("hien");
+  setTimeout(function(){kq.scrollIntoView({behavior:"smooth", block:"start"})}, 50);
+}
+
+function kiemTra(d){
+  if(!d.sp){ baoLoi("Bạn hãy nhập sản phẩm hoặc dịch vụ cần quảng cáo nhé."); $("sp").focus(); return false; }
+  baoLoi(""); return true;
+}
+
+function taoBai(){
+  var d = docForm();
+  if(!kiemTra(d)) return;
+  var nut = $("nut-tao"), nutLai = $("nut-lai");
+  var chuCu = nut.textContent;
+  nut.disabled = true; nutLai.disabled = true; nut.textContent = "⏳ Đang viết...";
+  var xong = function(){nut.disabled=false; nutLai.disabled=false; nut.textContent=chuCu};
+
+  if(cheDoAI){
+    goiAI(d, lanTao).then(function(r){hienKetQua(r,true); xong()}).catch(function(){
+      toast("AI đang bận, dùng mẫu demo tạm nhé");
+      hienKetQua(taoDemo(d, lanTao), false); xong();
+    });
+  }else{
+    setTimeout(function(){hienKetQua(taoDemo(d, lanTao), false); xong()}, 350);
+  }
+}
+
+$("form").addEventListener("submit", function(e){e.preventDefault(); lanTao = 0; taoBai()});
+$("nut-lai").addEventListener("click", function(){lanTao++; taoBai()});
+
+$("nut-chep").addEventListener("click", function(){
+  if(!ketQuaHienTai) return;
+  var r = ketQuaHienTai;
+  chepVaBao(r.tieude + "\n\n" + r.noidung + "\n\n" + r.cta + "\n\n" + r.hashtag);
+});
+
+$("nut-xoa").addEventListener("click", function(){
+  $("form").reset(); datPhongCach("thanthien"); baoLoi("");
+  $("ket-qua").classList.remove("hien"); ketQuaHienTai = null;
+  $("tk-ketqua").style.display = "none"; thietKeHienTai = null;
+  lanTao = 0; thietKeLan = 0;
+  toast("Đã xóa form");
+});
+
+$("nut-demo").addEventListener("click", function(){
+  $("ten").value = "Tiệm bánh Mẹ Lan";
+  $("sp").value = "Bánh bông lan trứng muối làm mỗi sáng, nhận đặt theo ngày";
+  $("gia").value = "85.000đ/hộp";
+  $("uudai").value = "Giảm 10% cho khách mới, freeship nội thành";
+  $("kh").value = "Dân văn phòng, mẹ bỉm sữa";
+  $("nentang").value = "facebook"; datPhongCach("thanthien"); baoLoi("");
+  toast("Đã điền mẫu. Bấm \"Tạo quảng cáo\"");
+});
+
+/* ============ Ý TƯỞNG THIẾT KẾ ============ */
+var PALETTE = {
+  thanthien:[{n:"Cam ấm",h:"#FF8A3D"},{n:"Kem",h:"#FFF4E6"},{n:"Xanh lá",h:"#2E7D32"},{n:"Chữ",h:"#333333"}],
+  chuyennghiep:[{n:"Xanh dương",h:"#1E4FD8"},{n:"Trắng xanh",h:"#F4F7FF"},{n:"Xanh đậm",h:"#0B1F44"},{n:"Vàng nhấn",h:"#FFB400"}],
+  haihuoc:[{n:"Vàng tươi",h:"#FFD93D"},{n:"Đỏ hồng",h:"#FF5A5F"},{n:"Xanh trời",h:"#4D96FF"},{n:"Chữ",h:"#222222"}],
+  sangtrong:[{n:"Đen",h:"#111111"},{n:"Vàng đồng",h:"#C9A24B"},{n:"Kem",h:"#F8F3E7"},{n:"Nâu",h:"#6B4F1D"}],
+  khuyenmai:[{n:"Đỏ",h:"#E53935"},{n:"Vàng",h:"#FFEB3B"},{n:"Trắng",h:"#FFFFFF"},{n:"Chữ",h:"#212121"}]
+};
+var KICH_THUOC = {
+  facebook:"Facebook: ảnh vuông 1080×1080 px hoặc ngang 1200×630 px",
+  zalo:"Zalo: ảnh dọc 1080×1350 px hoặc vuông 1080×1080 px",
+  tiktok:"TikTok: ảnh/video dọc 1080×1920 px (chừa 15% mép trên và dưới)",
+  instagram:"Instagram: ảnh vuông 1080×1080 px hoặc dọc 1080×1350 px",
+  cho:"Chợ online: ảnh vuông 1000×1000 px, nền sạch, sản phẩm rõ"
+};
+var BOCUC = [
+  ["Sản phẩm ở giữa, chiếm khoảng 60% khung hình","Tiêu đề lớn ở phía trên","Giá và ưu đãi đặt trong một khối màu nổi ở dưới","Số điện thoại hoặc Zalo ở chân poster"],
+  ["Chia đôi khung: nửa trái là ảnh sản phẩm, nửa phải là chữ","Tiêu đề 2 dòng, mỗi dòng không quá 4 từ","Nút giả \"Nhắn ngay\" màu nổi ở góc dưới phải","Logo cửa hàng ở góc trên trái"],
+  ["Ảnh sản phẩm phủ toàn khung, làm tối nhẹ phía dưới","Chữ trắng đậm đặt trên vùng tối","Ưu đãi nằm trong hình tròn hoặc ngôi sao ở góc trên phải","Dòng liên hệ gọn ở dưới cùng"]
+];
+var CHU = {
+  thanthien:["Phông chữ tròn, mềm (Baloo 2, Quicksand)","Ảnh thật, ánh sáng ấm, có tay người cầm sản phẩm","Thêm vài biểu tượng nhỏ như trái tim, lá, ngôi sao"],
+  chuyennghiep:["Phông chữ không chân đậm (Be Vietnam Pro, Roboto)","Ảnh sạch, nền đơn giản, nhiều khoảng trắng","Dùng biểu tượng đường nét thay vì hình vẽ nhiều màu"],
+  haihuoc:["Phông chữ to, nghiêng nhẹ (Lilita One, Baloo 2)","Hình minh họa vui hoặc nhân vật hoạt hình","Bong bóng thoại với câu nói đùa ngắn"],
+  sangtrong:["Phông chữ có chân thanh mảnh (Playfair Display) cho tiêu đề","Ảnh tối màu, ánh sáng gọn, ít chi tiết thừa","Viền vàng mảnh quanh khung, giữ nhiều khoảng trống"],
+  khuyenmai:["Phông chữ rất đậm, chữ hoa (Anton, Bebas Neue)","Số % hoặc giá viết to nhất poster","Dải chéo, tia sáng, đồng hồ đếm ngược để tạo cảm giác gấp"]
+};
+
+function taoThietKe(d, lan){
+  var pal = PALETTE[d.phongcach] || PALETTE.thanthien;
+  var chinh = d.uudai ? d.uudai : (d.gia ? ("Giá chỉ " + d.gia) : d.sp);
+  var tieude;
+  if(d.phongcach==="khuyenmai") tieude = (d.uudai ? d.uudai.toUpperCase() : "KHUYẾN MÃI " + d.sp.toUpperCase());
+  else if(d.phongcach==="sangtrong") tieude = d.ten ? d.ten : d.sp;
+  else if(d.phongcach==="haihuoc") tieude = chon(["Mua đi, ví sẽ hiểu!","Đừng chần chừ nữa nha!","Ngon bổ rẻ là đây!"], lan);
+  else tieude = d.sp;
+  if(tieude.length > 60) tieude = tieude.slice(0,57) + "...";
+  var phu = [];
+  if(d.ten) phu.push(d.ten);
+  if(d.uudai && tieude !== d.uudai.toUpperCase()) phu.push(d.uudai);
+  if(d.gia) phu.push("Giá: " + d.gia);
+  if(d.kh) phu.push("Dành cho " + d.kh);
+  var cta = chon(["Nhắn ngay","Đặt hàng hôm nay","Liên hệ để được tư vấn"], lan);
+  return {pal:pal, tieude:tieude, phu:phu, cta:cta, bocuc:chon(BOCUC, lan), chu:CHU[d.phongcach]||CHU.thanthien, nen:d.nentang, chinh:chinh};
+}
+
+function veThietKe(t){
+  var p = t.pal;
+  var po = $("tk-poster");
+  po.style.background = p[0].h;
+  po.style.color = (d_sang(p[0].h) ? "#212121" : "#fff");
+  po.innerHTML = "";
+  var b = document.createElement("b"); b.textContent = t.tieude; po.appendChild(b);
+  t.phu.slice(0,3).forEach(function(x){var s=document.createElement("span"); s.textContent=x; po.appendChild(s)});
+  var e = document.createElement("em"); e.textContent = t.cta;
+  e.style.background = p[3].h; e.style.color = d_sang(p[3].h) ? "#212121" : "#fff";
+  po.appendChild(e);
+
+  $("tk-kichthuoc").textContent = "📐 " + KICH_THUOC[t.nen];
+  var bm = $("tk-mau"); bm.innerHTML = "";
+  p.forEach(function(c){
+    var el = document.createElement("div"); el.className = "mau"; el.style.background = c.h;
+    el.style.color = d_sang(c.h) ? "#212121" : "#fff";
+    el.textContent = c.n + " " + c.h; el.setAttribute("role","button"); el.tabIndex = 0;
+    el.addEventListener("click", function(){chepVaBao(c.h)});
+    bm.appendChild(el);
+  });
+  var dsl = function(id, arr){var ul=$(id); ul.innerHTML=""; arr.forEach(function(x){var li=document.createElement("li"); li.textContent=x; ul.appendChild(li)})};
+  dsl("tk-bocuc", t.bocuc); dsl("tk-chu", t.chu);
+  $("tk-tieude").textContent = t.tieude;
+  $("tk-phu").textContent = t.phu.concat([t.cta]).join("\n");
+  $("tk-ketqua").style.display = "block";
+}
+function d_sang(hex){ // true nếu màu nền sáng
+  var n = parseInt(hex.slice(1),16), r=n>>16, g=(n>>8)&255, b=n&255;
+  return (0.299*r + 0.587*g + 0.114*b) > 150;
+}
+
+function chayThietKe(){
+  var d = docForm();
+  if(!d.sp){ toast("Hãy nhập sản phẩm ở tab \"Tạo bài\" trước nhé"); mo("tao"); $("sp").focus(); return; }
+  thietKeHienTai = taoThietKe(d, thietKeLan);
+  veThietKe(thietKeHienTai);
+  setTimeout(function(){$("tk-ketqua").scrollIntoView({behavior:"smooth", block:"start"})}, 50);
+}
+$("nut-tk").addEventListener("click", function(){thietKeLan = 0; chayThietKe()});
+$("nut-tk-lai").addEventListener("click", function(){thietKeLan++; chayThietKe()});
+$("nut-sangthietke").addEventListener("click", function(){mo("thietke"); thietKeLan = 0; chayThietKe()});
+$("nut-chep-tk").addEventListener("click", function(){
+  if(!thietKeHienTai) return;
+  chepVaBao(thietKeHienTai.tieude + "\n" + thietKeHienTai.phu.concat([thietKeHienTai.cta]).join("\n"));
+});
+
+/* ============ ZALO ============ */
+$("nut-zalo").addEventListener("click", function(e){
+  var so = (SO_ZALO||"").replace(/[^0-9]/g,"");
+  if(!so){
+    e.preventDefault();
+    toast("Chủ web chưa điền số Zalo (mở file index.html, sửa SO_ZALO)");
+    return;
+  }
+  this.href = "https://zalo.me/" + so;
+  this.target = "_blank"; this.rel = "noopener";
+});
+
+/* ============ KIỂM TRA CHẾ ĐỘ AI ============ */
+function kiemTraAI(){
+  var ctl = new AbortController(); var t = setTimeout(function(){ctl.abort()}, 3500);
+  fetch("/api/generate", {signal:ctl.signal}).then(function(r){
+    clearTimeout(t); if(!r.ok) throw 0; return r.json();
+  }).then(function(j){
+    cheDoAI = !!(j && j.ai);
+  }).catch(function(){cheDoAI = false}).then(function(){
+    var el = $("trang-thai");
+    el.innerHTML = "";
+    var sp = document.createElement("span");
+    sp.className = "huy-hieu " + (cheDoAI ? "hh-ai" : "hh-demo");
+    sp.textContent = cheDoAI ? "Đang dùng AI thật" : "Chế độ demo (chưa bật AI)";
+    el.appendChild(sp);
+  });
+}
+kiemTraAI();
+
+})();
+</script>
+</body>
+</html>
