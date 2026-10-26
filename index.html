@@ -546,13 +546,13 @@ $("nut-chep-tk").addEventListener("click", function(){
 
 /* ============ ZALO ============ */
 $("nut-zalo").addEventListener("click", function(e){
-  var so = (SO_ZALO||"").replace(/[^0-9]/g,"");
+  var so = (SO_ZALO||"0354830717").replace(/[^0-9]/g,"");
   if(!so){
     e.preventDefault();
     toast("Chủ web chưa điền số Zalo (mở file index.html, sửa SO_ZALO)");
     return;
   }
-  this.href = "https://zalo.me/" + so;
+  this.href = "https://zalo.me/" + 0354830717;
   this.target = "_blank"; this.rel = "noopener";
 });
 
