@@ -209,7 +209,7 @@
 <script>
 /* ============ CẤU HÌNH — CHỈ SỬA PHẦN NÀY ============ */
 // Điền số Zalo của bạn giữa hai dấu nháy, ví dụ: "0901234567". Để trống thì nút sẽ báo "chưa cấu hình".
-var SO_ZALO = "";
+var SO_ZALO = "0354830717";
 /* ======================================================= */
 
 (function(){
@@ -558,13 +558,13 @@ $("nut-chep-tk").addEventListener("click", function(){
 
 /* ============ ZALO ============ */
 $("nut-zalo").addEventListener("click", function(e){
-  var so = (SO_ZALO||"0354830717").replace(/[^0-9]/g,"");
+  var so = (SO_ZALO||"").replace(/[^0-9]/g,"");
   if(!so){
     e.preventDefault();
     toast("Chủ web chưa điền số Zalo (mở file index.html, sửa SO_ZALO)");
     return;
   }
-  this.href = "https://zalo.me/" + 0354830717;
+  this.href = "https://zalo.me/" + so;
   this.target = "_blank"; this.rel = "noopener";
 });
 
