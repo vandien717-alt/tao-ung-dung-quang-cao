@@ -69,6 +69,8 @@
     background:#111827;color:#fff;padding:12px 18px;border-radius:999px;font-size:.92rem;opacity:0;pointer-events:none;
     transition:.25s;z-index:20;max-width:90vw;text-align:center}
   .toast.hien{opacity:1;transform:translateX(-50%) translateY(0)}
+  .ban{border:2px solid var(--cam-nhat);border-left:6px solid var(--cam);border-radius:14px;padding:6px 12px 14px;margin:12px 0}
+  .ban h3{margin:8px 0 0;font-size:1rem;color:var(--cam-dam)}
   .chan{color:var(--chu-phu);font-size:.8rem;text-align:center;padding:6px 16px 0}
 </style>
 </head>
@@ -131,14 +133,11 @@
   </div>
 
   <div class="card ket-qua" id="ket-qua" aria-live="polite">
-    <h2>Bài quảng cáo của bạn <span id="hh-che-do" class="huy-hieu"></span></h2>
-    <div class="muc tieu-de"><small>Tiêu đề</small><span id="r-tieude"></span></div>
-    <div class="muc"><small>Nội dung</small><span id="r-noidung"></span></div>
-    <div class="muc"><small>Lời kêu gọi hành động</small><span id="r-cta"></span></div>
-    <div class="muc"><small>Hashtag</small><span id="r-hashtag"></span></div>
-    <button class="btn btn-chinh" id="nut-chep">📋 Sao chép bài viết</button>
+    <h2>3 bản quảng cáo cho bạn <span id="hh-che-do" class="huy-hieu"></span></h2>
+    <p class="goi-y" style="margin:0 0 6px">Chọn bản bạn thích rồi bấm sao chép. Bạn có thể sửa lại trước khi đăng.</p>
+    <div id="ds-ban"></div>
     <div class="hang">
-      <button class="btn btn-phu" id="nut-lai">🔄 Tạo lại</button>
+      <button class="btn btn-phu" id="nut-lai">🔄 Tạo 3 bản mới</button>
       <button class="btn btn-phu" id="nut-sangthietke">🎨 Ý tưởng poster</button>
     </div>
     <div class="canh-bao">⚠️ Hãy đọc lại và sửa cho đúng thực tế trước khi đăng. Tránh cam kết không có căn cứ (như "số 1", "tốt nhất", "cam kết 100%") vì có thể vi phạm quy định về quảng cáo.</div>
@@ -298,32 +297,32 @@ var MAU = {
   thanthien:{
     tieude:["{sp} – {ten} gửi bạn nè! 😊","Bạn đã thử {sp} chưa?","{ten} có {sp} đây, ghé xem nhé!","Hôm nay ăn gì, mua gì? Ghé {ten} nha!"],
     mo:["Chào cả nhà! 👋 {ten} xin giới thiệu {sp}.","Cả nhà ơi, {ten} có món mới muốn khoe với mọi người nè!","Xin chào, {ten} đây ạ! Hôm nay mình giới thiệu {sp}."],
-    dong:["Mình làm bằng cả tấm lòng, mong được phục vụ cả nhà ❤️","{ten} luôn cố gắng phục vụ thật tận tình ạ 🌷"],
-    cta:["Nhắn tin {ten} ngay để được tư vấn nhé!","Bấm nhắn tin hoặc gọi, mình trả lời liền ạ! 💬"]
+    dong:["Mình làm bằng cả tấm lòng, mong được phục vụ cả nhà ❤️","{ten} luôn cố gắng phục vụ thật tận tình ạ 🌷","Ghé xem thử rồi cảm nhận nhé, mình luôn chào đón cả nhà 🤗"],
+    cta:["Nhắn tin {ten} ngay để được tư vấn nhé!","Bấm nhắn tin hoặc gọi, mình trả lời liền ạ! 💬","Cần hỏi gì cứ nhắn mình nhé, trả lời ngay ạ! 🌸"]
   },
   chuyennghiep:{
     tieude:["{ten} – {sp}","Giải pháp {sp} từ {ten}","{ten} cung cấp {sp}","Giới thiệu {sp}"],
     mo:["{ten} trân trọng giới thiệu {sp}.","{ten} hiện cung cấp {sp} với quy trình rõ ràng, minh bạch.","Thông tin về {sp} tại {ten}:"],
-    dong:["Chúng tôi sẵn sàng tư vấn chi tiết theo nhu cầu của quý khách.","Thông tin chi tiết xin liên hệ trực tiếp để được hỗ trợ."],
-    cta:["Liên hệ {ten} để được tư vấn và báo giá.","Đặt lịch tư vấn ngay hôm nay."]
+    dong:["Chúng tôi sẵn sàng tư vấn chi tiết theo nhu cầu của quý khách.","Thông tin chi tiết xin liên hệ trực tiếp để được hỗ trợ.","Mọi thông tin được cung cấp rõ ràng trước khi quý khách quyết định."],
+    cta:["Liên hệ {ten} để được tư vấn và báo giá.","Đặt lịch tư vấn ngay hôm nay.","Gửi yêu cầu để nhận tư vấn từ {ten}."]
   },
   haihuoc:{
     tieude:["Ví tiền khóc, nhưng {sp} thì cười! 😆","{sp} đây rồi, hết cớ để lười! 🤭","Đừng để {sp} chờ bạn lâu, nó buồn đó!","Alo alo, {ten} đang gọi bạn!"],
     mo:["Này bạn ơi, nghe nói bạn đang tìm {sp}? 👀 {ten} có đây!","Bí mật nhỏ: {sp} của {ten} đang chờ bạn rước về! 🤫","Cảnh báo: đọc bài này có thể dẫn đến việc muốn mua {sp} ngay! 😂"],
-    dong:["Mua rồi không hối hận, chỉ hối hận vì không mua sớm hơn! 😜","Hỏi thử chơi cũng được, {ten} không cắn đâu! 🐶"],
-    cta:["Nhắn {ten} liền tay kẻo lỡ nha! 🏃","Inbox đi bạn ơi, đừng ngại! 💬"]
+    dong:["Mua rồi không hối hận, chỉ hối hận vì không mua sớm hơn! 😜","Hỏi thử chơi cũng được, {ten} không cắn đâu! 🐶","Chốt đơn nhanh, kẻo sản phẩm lại nhớ bạn! 🥹"],
+    cta:["Nhắn {ten} liền tay kẻo lỡ nha! 🏃","Inbox đi bạn ơi, đừng ngại! 💬","Bấm nhắn tin thử đi, có gì vui lắm! 🎉"]
   },
   sangtrong:{
     tieude:["{sp} – Tinh tế từng chi tiết","{ten} · {sp}","Trải nghiệm {sp} đẳng cấp","Phong cách riêng cùng {ten}"],
     mo:["{ten} kính giới thiệu {sp}, dành cho những ai đề cao sự tinh tế.","Mỗi chi tiết của {sp} đều được chăm chút cẩn thận.","Một lựa chọn thanh lịch từ {ten}."],
-    dong:["Dịch vụ được cá nhân hóa theo mong muốn của từng quý khách.","Sự hài lòng của quý khách là ưu tiên của chúng tôi."],
-    cta:["Kính mời quý khách liên hệ {ten} để được phục vụ.","Đặt lịch riêng cùng {ten}."]
+    dong:["Dịch vụ được cá nhân hóa theo mong muốn của từng quý khách.","Sự hài lòng của quý khách là ưu tiên của chúng tôi.","Mỗi lựa chọn đều mang dấu ấn riêng của bạn."],
+    cta:["Kính mời quý khách liên hệ {ten} để được phục vụ.","Đặt lịch riêng cùng {ten}.","Trân trọng mời quý khách ghé thăm {ten}."]
   },
   khuyenmai:{
     tieude:["🔥 SĂN DEAL {sp} – SỐ LƯỢNG CÓ HẠN! 🔥","⚡ {ten} KHUYẾN MÃI {sp} ⚡","🎉 ƯU ĐÃI ĐANG CHẠY – ĐỪNG BỎ LỠ! 🎉","⏰ CHỈ HÔM NAY: {sp}"],
     mo:["📢 {ten} đang có chương trình cho {sp}!","🔔 Tin vui! {sp} tại {ten} đang có ưu đãi, xem ngay!","💥 Cơ hội hiếm: {sp} cùng ưu đãi từ {ten}!"],
-    dong:["Số lượng có hạn, ai nhắn trước được trước! ⏳","Chương trình có thể kết thúc sớm, nhanh tay nhé! 🏃‍♀️"],
-    cta:["👉 NHẮN TIN NGAY để giữ ưu đãi!","👉 Gọi hoặc inbox liền tay, đừng để mai!"]
+    dong:["Số lượng có hạn, ai nhắn trước được trước! ⏳","Chương trình có thể kết thúc sớm, nhanh tay nhé! 🏃‍♀️","Đừng chờ đến khi hết ưu đãi mới tiếc nhé! 😱"],
+    cta:["👉 NHẮN TIN NGAY để giữ ưu đãi!","👉 Gọi hoặc inbox liền tay, đừng để mai!","👉 Chốt ngay hôm nay để không bỏ lỡ!"]
   }
 };
 var CTA_NEN = {
@@ -388,15 +387,29 @@ function goiAI(d, lan){
 }
 
 /* ---------- Hiển thị kết quả ---------- */
-function hienKetQua(r, laAI){
-  ketQuaHienTai = r;
-  $("r-tieude").textContent = r.tieude;
-  $("r-noidung").textContent = r.noidung;
-  $("r-cta").textContent = r.cta;
-  $("r-hashtag").textContent = r.hashtag;
+function hienKetQua(list){
+  ketQuaHienTai = list;
+  var ds = $("ds-ban"); ds.innerHTML = "";
+  var coAI = false, coDemo = false;
+  list.forEach(function(it, i){
+    var r = it.r; if(it.ai) coAI = true; else coDemo = true;
+    var box = document.createElement("div"); box.className = "ban";
+    var h = document.createElement("h3"); h.textContent = "Bản " + (i+1); box.appendChild(h);
+    [["Tiêu đề", r.tieude, "tieu-de"], ["Nội dung", r.noidung, ""], ["Lời kêu gọi hành động", r.cta, ""], ["Hashtag", r.hashtag, ""]].forEach(function(f){
+      var m = document.createElement("div"); m.className = "muc " + f[2];
+      var sm = document.createElement("small"); sm.textContent = f[0];
+      var sp = document.createElement("span"); sp.textContent = f[1];
+      m.appendChild(sm); m.appendChild(sp); box.appendChild(m);
+    });
+    var bt = document.createElement("button"); bt.type = "button"; bt.className = "btn btn-chinh";
+    bt.textContent = "📋 Sao chép bản " + (i+1);
+    bt.addEventListener("click", function(){ chepVaBao(r.tieude + "\n\n" + r.noidung + "\n\n" + r.cta + "\n\n" + r.hashtag); });
+    box.appendChild(bt);
+    ds.appendChild(box);
+  });
   var hh = $("hh-che-do");
-  hh.textContent = laAI ? "AI" : "Mẫu demo";
-  hh.className = "huy-hieu " + (laAI ? "hh-ai" : "hh-demo");
+  hh.textContent = coAI ? (coDemo ? "AI + mẫu demo" : "AI") : "Mẫu demo";
+  hh.className = "huy-hieu " + (coAI && !coDemo ? "hh-ai" : "hh-demo");
   var kq = $("ket-qua"); kq.classList.add("hien");
   setTimeout(function(){kq.scrollIntoView({behavior:"smooth", block:"start"})}, 50);
 }
@@ -414,28 +427,27 @@ function taoBai(){
   nut.disabled = true; nutLai.disabled = true; nut.textContent = "⏳ Đang viết...";
   var xong = function(){nut.disabled=false; nutLai.disabled=false; nut.textContent=chuCu};
 
+  var goc = lanTao * 3, soBan = [0, 1, 2];
   if(cheDoAI){
-    goiAI(d, lanTao).then(function(r){hienKetQua(r,true); xong()}).catch(function(){
-      toast("AI đang bận, dùng mẫu demo tạm nhé");
-      hienKetQua(taoDemo(d, lanTao), false); xong();
+    Promise.all(soBan.map(function(i){
+      return goiAI(d, goc + i).then(function(r){return {r:r, ai:true}}).catch(function(){return {r:taoDemo(d, goc + i), ai:false}});
+    })).then(function(list){
+      if(list.some(function(x){return !x.ai})) toast("Có bản AI đang bận, đã dùng mẫu demo thay thế");
+      hienKetQua(list); xong();
     });
   }else{
-    setTimeout(function(){hienKetQua(taoDemo(d, lanTao), false); xong()}, 350);
+    setTimeout(function(){
+      hienKetQua(soBan.map(function(i){return {r:taoDemo(d, goc + i), ai:false}})); xong();
+    }, 350);
   }
 }
 
 $("form").addEventListener("submit", function(e){e.preventDefault(); lanTao = 0; taoBai()});
 $("nut-lai").addEventListener("click", function(){lanTao++; taoBai()});
 
-$("nut-chep").addEventListener("click", function(){
-  if(!ketQuaHienTai) return;
-  var r = ketQuaHienTai;
-  chepVaBao(r.tieude + "\n\n" + r.noidung + "\n\n" + r.cta + "\n\n" + r.hashtag);
-});
-
 $("nut-xoa").addEventListener("click", function(){
   $("form").reset(); datPhongCach("thanthien"); baoLoi("");
-  $("ket-qua").classList.remove("hien"); ketQuaHienTai = null;
+  $("ket-qua").classList.remove("hien"); ketQuaHienTai = null; $("ds-ban").innerHTML = "";
   $("tk-ketqua").style.display = "none"; thietKeHienTai = null;
   lanTao = 0; thietKeLan = 0;
   toast("Đã xóa form");

@@ -4,7 +4,7 @@
 // TUYỆT ĐỐI không dán key vào file này hay index.html.
 
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const HAN_MUC = 8;          // số lượt / phút / mỗi IP (bộ giới hạn đơn giản, chỉ trong bộ nhớ)
+const HAN_MUC = 15;         // số lượt / phút / mỗi IP (mỗi lần bấm tạo = 3 lượt) (bộ giới hạn đơn giản, chỉ trong bộ nhớ)
 const lanGoi = new Map();
 
 function biChan(ip) {
