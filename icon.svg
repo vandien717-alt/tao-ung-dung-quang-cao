@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AI Quảng Cáo Việt icon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#FFB067"/>
+      <stop offset="50%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#g)"/>
+  <rect x="88" y="88" width="336" height="336" rx="76" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.24)"/>
+  <path d="M164 348V164h62l58 80 58-80h62v184h-42V242l-78 106-78-106v106z" fill="#fff"/>
+  <circle cx="382" cy="162" r="28" fill="#fff" opacity="0.92"/>
+  <path d="M118 398h282" stroke="#fff" stroke-width="18" stroke-linecap="round" opacity="0.75"/>
+</svg>
