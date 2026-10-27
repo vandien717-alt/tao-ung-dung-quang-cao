@@ -140,7 +140,7 @@
       <button class="btn btn-phu" id="nut-lai">🔄 Tạo 3 bản mới</button>
       <button class="btn btn-phu" id="nut-sangthietke">🎨 Ý tưởng poster</button>
     </div>
-    <div class="canh-bao">⚠️ Hãy đọc lại và sửa cho đúng thực tế trước khi đăng. Tránh cam kết không có căn cứ (như "số 1", "tốt nhất", "cam kết 100%") vì có thể vi phạm quy định về quảng cáo.</div>
+    <div class="canh-bao">⚠️ Hãy đọc lại và sửa cho đúng thực tế trước khi đăng. Tránh cam kết không có căn cứ (như "số 1", "tốt nhất", "cam kết 100%") vì sẽ làm giảm độ tin cậy.</div>
   </div>
 </section>
 
@@ -148,7 +148,7 @@
 <section id="tab-thietke" class="tab">
   <div class="card">
     <h2>🎨 Ý tưởng thiết kế poster</h2>
-    <p style="margin-top:0;color:var(--chu-phu);font-size:.92rem">Dựa trên thông tin và phong cách bạn đã chọn ở tab "Tạo bài". Gợi ý này dùng để đưa cho người thiết kế hoặc tự làm trên Canva, Zalo, điện thoại.</p>
+    <p style="margin-top:0;color:var(--chu-phu);font-size:.92rem">Dựa trên thông tin và phong cách bạn đã chọn ở tab "Tạo bài". Gợi ý này dùng để đưa cho người thiết kế hoặc bạn tự lên ý tưởng poster nhanh hơn.</p>
     <button class="btn btn-chinh" id="nut-tk">💡 Gợi ý thiết kế</button>
   </div>
   <div id="tk-ketqua" style="display:none">
@@ -295,34 +295,34 @@ function baoLoi(msg){
 /* ============ BỘ TẠO NỘI DUNG DEMO (chạy ngay trên trình duyệt, không cần mạng) ============ */
 var MAU = {
   thanthien:{
-    tieude:["{sp} – {ten} gửi bạn nè! 😊","Bạn đã thử {sp} chưa?","{ten} có {sp} đây, ghé xem nhé!","Hôm nay ăn gì, mua gì? Ghé {ten} nha!"],
-    mo:["Chào cả nhà! 👋 {ten} xin giới thiệu {sp}.","Cả nhà ơi, {ten} có món mới muốn khoe với mọi người nè!","Xin chào, {ten} đây ạ! Hôm nay mình giới thiệu {sp}."],
-    dong:["Mình làm bằng cả tấm lòng, mong được phục vụ cả nhà ❤️","{ten} luôn cố gắng phục vụ thật tận tình ạ 🌷","Ghé xem thử rồi cảm nhận nhé, mình luôn chào đón cả nhà 🤗"],
-    cta:["Nhắn tin {ten} ngay để được tư vấn nhé!","Bấm nhắn tin hoặc gọi, mình trả lời liền ạ! 💬","Cần hỏi gì cứ nhắn mình nhé, trả lời ngay ạ! 🌸"]
+    tieude:["{sp} – {ten} gửi bạn nè! 😊","Bạn đã thử {sp} chưa?","{ten} có {sp} đây, ghé xem nhé!","Hôm nay ăn gì, mua gì? Ghé {ten} nha!","✨ {sp} ngọt ngào, chuẩn vị cho mọi nhà!","{ten} vừa có {sp} mới về, ai mê là phải thử ngay!"],
+    mo:["Chào cả nhà! 👋 {ten} xin giới thiệu {sp}.","Cả nhà ơi, {ten} có món mới muốn khoe với mọi người nè!","Xin chào, {ten} đây ạ! Hôm nay mình muốn chia sẻ {sp} chất lượng và tận tâm nhất ạ 💛","Ghé {ten} thử {sp} nhé, vừa ngon vừa đáng yêu lại rất dễ thương 🌼"],
+    dong:["Mình làm bằng cả tấm lòng, mong được phục vụ cả nhà ❤️","{ten} luôn cố gắng phục vụ thật tận tình ạ 🌷","Ghé xem thử rồi cảm nhận sự khác biệt nhé, mình ưu tiên chất lượng và sự hài lòng của bạn 🤍","Đã mua rồi thì cứ nhắn cho mình, mình tư vấn nhiệt tình cùng bạn từng bước ✨"],
+    cta:["Nhắn tin {ten} ngay để được tư vấn nhé!","Bấm nhắn tin hoặc gọi, mình trả lời liền ạ! 💬","Cần hỏi gì cứ nhắn mình nhé, trả lời ngay ạ! 📩","Inbox cho mình để nhận tư vấn nhanh và thuận tiện nhất nhé 😊"]
   },
   chuyennghiep:{
-    tieude:["{ten} – {sp}","Giải pháp {sp} từ {ten}","{ten} cung cấp {sp}","Giới thiệu {sp}"],
-    mo:["{ten} trân trọng giới thiệu {sp}.","{ten} hiện cung cấp {sp} với quy trình rõ ràng, minh bạch.","Thông tin về {sp} tại {ten}:"],
-    dong:["Chúng tôi sẵn sàng tư vấn chi tiết theo nhu cầu của quý khách.","Thông tin chi tiết xin liên hệ trực tiếp để được hỗ trợ.","Mọi thông tin được cung cấp rõ ràng trước khi quý khách quyết định."],
-    cta:["Liên hệ {ten} để được tư vấn và báo giá.","Đặt lịch tư vấn ngay hôm nay.","Gửi yêu cầu để nhận tư vấn từ {ten}."]
+    tieude:["{ten} – {sp}","Giải pháp {sp} từ {ten}","{ten} cung cấp {sp}","Giới thiệu {sp}","✅ {sp} chất lượng cao từ {ten}","{ten} mang đến {sp} phù hợp nhu cầu hiện đại"],
+    mo:["{ten} trân trọng giới thiệu {sp}.","{ten} hiện cung cấp {sp} với quy trình rõ ràng, minh bạch.","Thông tin về {sp} tại {ten}:","{ten} cam kết mang đến {sp} an toàn, hiệu quả và đáng tin cậy cho khách hàng."],
+    dong:["Chúng tôi sẵn sàng tư vấn chi tiết theo nhu cầu của quý khách.","Thông tin chi tiết xin liên hệ trực tiếp để được hỗ trợ.","Mọi thông tin được cập nhật rõ ràng để quý khách dễ dàng lựa chọn.","Đội ngũ hỗ trợ luôn sẵn sàng giải đáp và tư vấn nhanh chóng."],
+    cta:["Liên hệ {ten} để được tư vấn và báo giá.","Đặt lịch tư vấn ngay hôm nay.","Gửi yêu cầu để nhận tư vấn từ {ten}.","Inbox hoặc gọi trực tiếp để được hỗ trợ tốt nhất nhé." ]
   },
   haihuoc:{
-    tieude:["Ví tiền khóc, nhưng {sp} thì cười! 😆","{sp} đây rồi, hết cớ để lười! 🤭","Đừng để {sp} chờ bạn lâu, nó buồn đó!","Alo alo, {ten} đang gọi bạn!"],
-    mo:["Này bạn ơi, nghe nói bạn đang tìm {sp}? 👀 {ten} có đây!","Bí mật nhỏ: {sp} của {ten} đang chờ bạn rước về! 🤫","Cảnh báo: đọc bài này có thể dẫn đến việc muốn mua {sp} ngay! 😂"],
-    dong:["Mua rồi không hối hận, chỉ hối hận vì không mua sớm hơn! 😜","Hỏi thử chơi cũng được, {ten} không cắn đâu! 🐶","Chốt đơn nhanh, kẻo sản phẩm lại nhớ bạn! 🥹"],
-    cta:["Nhắn {ten} liền tay kẻo lỡ nha! 🏃","Inbox đi bạn ơi, đừng ngại! 💬","Bấm nhắn tin thử đi, có gì vui lắm! 🎉"]
+    tieude:["Ví tiền khóc, nhưng {sp} thì cười! 😆","{sp} đây rồi, hết cớ để lười! 🤭","Đừng để {sp} chờ bạn lâu, nó buồn đó!","Alo alo, {ten} đang bật chế độ “mê {sp}” rồi đây!","🤩 {sp} tới rồi, ai không mua là thiếu xíu vui!","{ten} đang cầm {sp} mà kêu “đừng ngại, mình đẹp mà lại rẻ”! 😜"],
+    mo:["Này bạn ơi, nghe nói bạn đang tìm {sp}? 👀 {ten} có đây!","Bí mật nhỏ: {sp} của {ten} đang chờ bạn rước về! 🤫","Cảnh báo: đọc bài này có thể khiến bạn ngại ngùng với việc chưa mua {sp}!","Nghe nói bạn thích {sp}? Mình còn có kho tàng xịn xò hơn nữa đó 😎"],
+    dong:["Mua rồi không hối hận, chỉ hối hận vì không mua sớm hơn! 😜","Hỏi thử chơi cũng được, {ten} không cắn đâu! 🐶","Chốt đơn nhanh, kẻo sản phẩm hết rồi! 🚀","Mua là hài lòng, không mua là tiếc thôi nha, còn chần chừ gì nữa! ✨"],
+    cta:["Nhắn {ten} liền tay kẻo lỡ nha! 🏃","Inbox đi bạn ơi, đừng ngại! 💬","Bấm nhắn tin thử đi, có gì vui lắm! 🎉","Inbox cho mình để được tư vấn nhanh gọn, lẹ như điện thoại chẳng cần chờ lâu." ]
   },
   sangtrong:{
-    tieude:["{sp} – Tinh tế từng chi tiết","{ten} · {sp}","Trải nghiệm {sp} đẳng cấp","Phong cách riêng cùng {ten}"],
-    mo:["{ten} kính giới thiệu {sp}, dành cho những ai đề cao sự tinh tế.","Mỗi chi tiết của {sp} đều được chăm chút cẩn thận.","Một lựa chọn thanh lịch từ {ten}."],
-    dong:["Dịch vụ được cá nhân hóa theo mong muốn của từng quý khách.","Sự hài lòng của quý khách là ưu tiên của chúng tôi.","Mỗi lựa chọn đều mang dấu ấn riêng của bạn."],
-    cta:["Kính mời quý khách liên hệ {ten} để được phục vụ.","Đặt lịch riêng cùng {ten}.","Trân trọng mời quý khách ghé thăm {ten}."]
+    tieude:["{sp} – Tinh tế từng chi tiết","{ten} · {sp}","Trải nghiệm {sp} đẳng cấp","Phong cách riêng cùng {ten}","✨ {sp} dành cho những trải nghiệm tinh tế","{ten} mang đến {sp} với sự thanh lịch và hoàn thiện"],
+    mo:["{ten} kính giới thiệu {sp}, dành cho những ai đề cao sự tinh tế.","Mỗi chi tiết của {sp} đều được chăm chút cẩn thận.","Một lựa chọn thanh lịch và khác biệt từ {ten}.","Sự hoàn hảo trong từng chi tiết là giá trị mà {ten} mang đến với {sp}."],
+    dong:["Dịch vụ được cá nhân hóa theo mong muốn của từng quý khách.","Sự hài lòng của quý khách là ưu tiên của chúng tôi.","Mỗi lựa chọn đều mang đến cảm giác vượt trội về chất lượng và phong cách.","Quý khách đặt trọn niềm tin, chúng tôi mang đến trải nghiệm hoàn hảo."],
+    cta:["Kính mời quý khách liên hệ {ten} để được phục vụ.","Đặt lịch riêng cùng {ten}.","Trân trọng mời quý khách ghé thăm {ten}.","Liên hệ ngay để được tư vấn ưu tiên và trải nghiệm dịch vụ chuyên nghiệp nhất." ]
   },
   khuyenmai:{
-    tieude:["🔥 SĂN DEAL {sp} – SỐ LƯỢNG CÓ HẠN! 🔥","⚡ {ten} KHUYẾN MÃI {sp} ⚡","🎉 ƯU ĐÃI ĐANG CHẠY – ĐỪNG BỎ LỠ! 🎉","⏰ CHỈ HÔM NAY: {sp}"],
-    mo:["📢 {ten} đang có chương trình cho {sp}!","🔔 Tin vui! {sp} tại {ten} đang có ưu đãi, xem ngay!","💥 Cơ hội hiếm: {sp} cùng ưu đãi từ {ten}!"],
-    dong:["Số lượng có hạn, ai nhắn trước được trước! ⏳","Chương trình có thể kết thúc sớm, nhanh tay nhé! 🏃‍♀️","Đừng chờ đến khi hết ưu đãi mới tiếc nhé! 😱"],
-    cta:["👉 NHẮN TIN NGAY để giữ ưu đãi!","👉 Gọi hoặc inbox liền tay, đừng để mai!","👉 Chốt ngay hôm nay để không bỏ lỡ!"]
+    tieude:["🔥 SĂN DEAL {sp} – SỐ LƯỢNG CÓ HẠN! 🔥","⚡ {ten} KHUYẾN MÃI {sp} ⚡","🎉 ƯU ĐÃI ĐANG CHẠY – ĐỪNG BỎ LỠ! 🎉","⏰ CHỈ HÔM NAY: {sp}","🚀 {sp} hot nhất hôm nay tại {ten}","💥 GIẢM SỐC – {sp} cực chất với giá ưu đãi"],
+    mo:["📢 {ten} đang có chương trình cho {sp}!","🔔 Tin vui! {sp} tại {ten} đang có ưu đãi, xem ngay!","💥 Cơ hội hiếm: {sp} cùng ưu đãi từ {ten}!","⚡ Hôm nay {ten} bùng nổ ưu đãi cho {sp}, săn ngay thôi!"],
+    dong:["Số lượng có hạn, ai nhắn trước được trước! ⏳","Chương trình có thể kết thúc sớm, nhanh tay nhé! 🏃‍♀️","Đừng chờ đến khi hết ưu đãi, hôm nay còn giá tốt! 💸","Mua ngay để nhận ưu đãi hấp dẫn nhất, số lượng giới hạn và đang giảm mạnh! 🔥"],
+    cta:["👉 NHẮN TIN NGAY để giữ ưu đãi!","👉 Gọi hoặc inbox liền tay, đừng để mai!","👉 Chốt ngay hôm nay để không bỏ lỡ!","👉 Inbox ngay để nhận ưu đãi và tư vấn nhanh nhất." ]
   }
 };
 var CTA_NEN = {
@@ -333,8 +333,11 @@ var CTA_NEN = {
   cho:"Nhấn chat với người bán để được hỗ trợ."
 };
 var HASHTAG_NEN = {
-  facebook:["#QuangCao","#MuaSamOnline"], zalo:["#ZaloShop","#MuaSamOnline"],
-  tiktok:["#fyp","#TikTokShop"], instagram:["#Instagram","#Shop"], cho:["#ChoOnline","#MuaBanOnline"]
+  facebook:["#QuangCao","#MuaSamOnline","#DealHot","#ShopVietNam","#KhuyenMai"],
+  zalo:["#ZaloShop","#MuaSamOnline","#KhuyenMai","#DealHot","#CuaHangViet"],
+  tiktok:["#fyp","#TikTokShop","#DealHot","#MuaNgay","#KhuyenMai"],
+  instagram:["#Instagram","#Shop","#DealHot","#VietStyle","#KhuyenMai"],
+  cho:["#ChoOnline","#MuaBanOnline","#DealHot","#SanPhamChatLuong","#KhuyenMai"]
 };
 
 function dien(s, d){
@@ -479,16 +482,17 @@ var KICH_THUOC = {
   cho:"Chợ online: ảnh vuông 1000×1000 px, nền sạch, sản phẩm rõ"
 };
 var BOCUC = [
-  ["Sản phẩm ở giữa, chiếm khoảng 60% khung hình","Tiêu đề lớn ở phía trên","Giá và ưu đãi đặt trong một khối màu nổi ở dưới","Số điện thoại hoặc Zalo ở chân poster"],
-  ["Chia đôi khung: nửa trái là ảnh sản phẩm, nửa phải là chữ","Tiêu đề 2 dòng, mỗi dòng không quá 4 từ","Nút giả \"Nhắn ngay\" màu nổi ở góc dưới phải","Logo cửa hàng ở góc trên trái"],
-  ["Ảnh sản phẩm phủ toàn khung, làm tối nhẹ phía dưới","Chữ trắng đậm đặt trên vùng tối","Ưu đãi nằm trong hình tròn hoặc ngôi sao ở góc trên phải","Dòng liên hệ gọn ở dưới cùng"]
+  ["Sản phẩm ở giữa, chiếm khoảng 60% khung hình","Tiêu đề lớn ở phía trên","Giá và ưu đãi đặt trong một khối màu nổi ở dưới","Số điện thoại hoặc nhắn tin đặt ở góc cuối","Thêm icon như ⭐, 🔥, ✅ để tăng độ cuốn"],
+  ["Chia đôi khung: nửa trái là ảnh sản phẩm, nửa phải là chữ","Tiêu đề 2 dòng, mỗi dòng không quá 4 từ","Nút giả \"Nhắn ngay\" màu nổi ở góc dưới phải","Dùng hình dạng tròn hoặc bo viền mềm","Thêm sticker vui, emoji hoặc hiệu ứng sáng ở góc trên"],
+  ["Ảnh sản phẩm phủ toàn khung, làm tối nhẹ phía dưới","Chữ trắng đậm đặt trên vùng tối","Ưu đãi nằm trong hình tròn hoặc ngôi sao ở góc trên phải","Dùng icon 💬, 🚀, ✨ để tạo cảm giác khẩn cấp","Giữ khoảng trắng nhiều để poster dễ đọc và đẹp"],
+  ["Đặt sản phẩm trên cùng, chữ tiêu đề ở giữa","Dùng 2-3 mảng màu nổi để tạo điểm nhấn","Ưu đãi và CTA nằm thành khối dưới cùng","Thêm icon 💡, ✅, 🚚 cho người xem dễ nắm thông tin","Nền có độ tương phản mạnh, dễ nhìn trên điện thoại"]
 ];
 var CHU = {
-  thanthien:["Phông chữ tròn, mềm (Baloo 2, Quicksand)","Ảnh thật, ánh sáng ấm, có tay người cầm sản phẩm","Thêm vài biểu tượng nhỏ như trái tim, lá, ngôi sao"],
-  chuyennghiep:["Phông chữ không chân đậm (Be Vietnam Pro, Roboto)","Ảnh sạch, nền đơn giản, nhiều khoảng trắng","Dùng biểu tượng đường nét thay vì hình vẽ nhiều màu"],
-  haihuoc:["Phông chữ to, nghiêng nhẹ (Lilita One, Baloo 2)","Hình minh họa vui hoặc nhân vật hoạt hình","Bong bóng thoại với câu nói đùa ngắn"],
-  sangtrong:["Phông chữ có chân thanh mảnh (Playfair Display) cho tiêu đề","Ảnh tối màu, ánh sáng gọn, ít chi tiết thừa","Viền vàng mảnh quanh khung, giữ nhiều khoảng trống"],
-  khuyenmai:["Phông chữ rất đậm, chữ hoa (Anton, Bebas Neue)","Số % hoặc giá viết to nhất poster","Dải chéo, tia sáng, đồng hồ đếm ngược để tạo cảm giác gấp"]
+  thanthien:["Phông chữ tròn, mềm (Baloo 2, Quicksand)","Ảnh thật, ánh sáng ấm, có tay người cầm sản phẩm","Thêm vài biểu tượng nhỏ như trái tim, lá, ngôi sao, emoji mặt cười","Nội dung ngắn gọn, lời thoại gần gũi và dễ chạm đến cảm xúc"],
+  chuyennghiep:["Phông chữ không chân đậm (Be Vietnam Pro, Roboto)","Ảnh sạch, nền đơn giản, nhiều khoảng trắng","Dùng biểu tượng đường nét thay vì hình vẽ rối","Tiêu đề ngắn, rõ, không dùng quá nhiều emoji để giữ vẻ chuyên nghiệp"],
+  haihuoc:["Phông chữ to, nghiêng nhẹ (Lilita One, Baloo 2)","Hình minh họa vui hoặc nhân vật hoạt hình","Bong bóng thoại với câu nói đùa ngắn","Thêm emoji vui như 😄, 🤩, 😆, 🧠, ⚡ để tạo nhịp điệu"],
+  sangtrong:["Phông chữ có chân thanh mảnh (Playfair Display) cho tiêu đề","Ảnh tối màu, ánh sáng gọn, ít chi tiết thừa","Viền vàng mảnh quanh khung, giữ nhiều không gian trắng","Dùng icon ✨, ♡, 🕊️ để tăng sự sang và tinh tế"],
+  khuyenmai:["Phông chữ rất đậm, chữ hoa (Anton, Bebas Neue)","Số % hoặc giá viết to nhất poster","Dải chéo, tia sáng, đồng hồ đếm ngược để tạo cảm giác khẩn cấp","Thêm icon 🔥, 🚀, ⚡, ✅ để tạo sự hứng thú và nhấn mạnh" ]
 };
 
 function taoThietKe(d, lan){
@@ -497,7 +501,7 @@ function taoThietKe(d, lan){
   var tieude;
   if(d.phongcach==="khuyenmai") tieude = (d.uudai ? d.uudai.toUpperCase() : "KHUYẾN MÃI " + d.sp.toUpperCase());
   else if(d.phongcach==="sangtrong") tieude = d.ten ? d.ten : d.sp;
-  else if(d.phongcach==="haihuoc") tieude = chon(["Mua đi, ví sẽ hiểu!","Đừng chần chừ nữa nha!","Ngon bổ rẻ là đây!"], lan);
+  else if(d.phongcach==="haihuoc") tieude = chon(["Mua đi, ví sẽ hiểu!","Đừng chần chừ nữa nha!","Ngon bổ rẻ là đây!","Đặt ngay, kẻo hết deal!"], lan);
   else tieude = d.sp;
   if(tieude.length > 60) tieude = tieude.slice(0,57) + "...";
   var phu = [];
@@ -505,7 +509,7 @@ function taoThietKe(d, lan){
   if(d.uudai && tieude !== d.uudai.toUpperCase()) phu.push(d.uudai);
   if(d.gia) phu.push("Giá: " + d.gia);
   if(d.kh) phu.push("Dành cho " + d.kh);
-  var cta = chon(["Nhắn ngay","Đặt hàng hôm nay","Liên hệ để được tư vấn"], lan);
+  var cta = chon(["Nhắn ngay","Đặt hàng hôm nay","Liên hệ để được tư vấn","Mua ngay thôi"], lan);
   return {pal:pal, tieude:tieude, phu:phu, cta:cta, bocuc:chon(BOCUC, lan), chu:CHU[d.phongcach]||CHU.thanthien, nen:d.nentang, chinh:chinh};
 }
 
